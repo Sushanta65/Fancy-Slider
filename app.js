@@ -97,7 +97,7 @@ const createSlider = () => {
   timer = setInterval(function () {
     slideIndex++;
     changeSlide(slideIndex);
-  }, document.getElementById('duration').value && 1000);
+  }, document.getElementById('duration').value || 1000);
 }
 
 // change slider index 
