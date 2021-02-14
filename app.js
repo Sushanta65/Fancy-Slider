@@ -1,3 +1,9 @@
+
+/////---Extra addred features are........
+/// 1. Added Spinner 
+/// 2. Made Enter key clickable for Slider Button 
+
+
 const imagesArea = document.querySelector('.images');
 const gallery = document.querySelector('.gallery');
 const galleryHeader = document.querySelector('.gallery-header');
@@ -25,7 +31,7 @@ const showImages = (images) => {
     div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
     gallery.appendChild(div)
   })
-  toggleSppiner()
+  toggleSpinner()
 }
   // Make Enter key Clickable for searchBtn
 document.getElementById('search').addEventListener('keypress', function (event) {
@@ -43,7 +49,7 @@ document.getElementById('duration').addEventListener('keypress', function (event
 })
 
 const getImages = (query) => {
-  toggleSppiner()
+  toggleSpinner()
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
     .then(response => response.json())
     .then(data => showImages(data.hits))
@@ -97,7 +103,7 @@ const createSlider = () => {
   timer = setInterval(function () {
     slideIndex++;
     changeSlide(slideIndex);
-  }, document.getElementById('duration').value || 1000);
+  }, document.getElementById('duration').value && 1000);
 }
 
 // change slider index 
@@ -138,8 +144,8 @@ sliderBtn.addEventListener('click', function () {
   createSlider()
 })
 // Extra added feature
-// Sppiner this a extra added feature
-const toggleSppiner = (showSppiner) => {
-  const loadingSppiner = document.getElementById('loading')
-  loadingSppiner.classList.toggle('d-none')
+// Spinner this a extra added feature
+const toggleSpinner = () => {
+  const loadingSpinner = document.getElementById('loading')
+  loadingSpinner.classList.toggle('d-none')
 }
